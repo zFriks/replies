@@ -12,4 +12,12 @@
 ![Screenshot_510](https://user-images.githubusercontent.com/68365842/139442348-7a866b88-ee7a-4d22-aeae-8ce565a8b6ca.png)
 
 # Установка
+Скачайте скрипт. Это можео сделать здесь:
+
+![Screenshot_511](https://user-images.githubusercontent.com/68365842/139444525-bedd7ae8-4b49-432d-bcc8-44efe9fe5470.png)
+![Screenshot_512](https://user-images.githubusercontent.com/68365842/139444563-706e13dd-4b86-4135-9d2e-96b547a6ee52.png)
+
 Скачав скрипт, переместите папку в корень игры с заменой. Все! Установка завершена!
+
+
+![Screenshot_513](https://user-images.githubusercontent.com/68365842/139444808-b1179e63-a2ca-4bb8-b2e8-6054f8975f2d.png)
