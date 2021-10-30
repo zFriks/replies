@@ -2,6 +2,7 @@
 
 class Replies {
      constructor() {
+          this.debugMode = true
           this.replies = { items: [] }
           this.stats = { items: [] }
           this.dialogInputText = ''
@@ -29,12 +30,13 @@ class Replies {
                data.getAll().onsuccess = (data) => {
                     this.replies.items = data.target.result;
                     this.isNewDay();
+                    console.log('База данных загружена', this.replies.items);
                };
           }
 
           request.onupgradeneeded = (event) => {
-
                this.db = event.target.result;
+               
                var objectStore = this.db.createObjectStore("replies", { keyPath: 'id' });
 
                objectStore.add({ id: 0, date: new Date().toJSON().split(/T/)[0], replies: 0 });
@@ -44,6 +46,8 @@ class Replies {
           return
      }
      showReplies() {
+          console.log('Показываю список с ответами...');
+
           this.dialogOpen = 2;
 
           if (this.repliesToComplete == 0) {
@@ -69,19 +73,19 @@ class Replies {
           });
 
           App.$children[0].addDialogInQueue("[0,0,\"Ответы за 20 дней\",\"\",\"Сброс\",\"Закрыть\",0,0]", "Дата\t\t\t    Ответы / Норма<n><n>{FFFFFF}" + result.join(''), 0);
-          return;
+          return
      }
      addReply() {
           let lastIndex = this.replies.items.length - 1;
           this.replies.items[lastIndex].replies++;
 
           if (this.replies.items[lastIndex].replies == this.repliesToComplete) {
-               this.sendGameText(`[2,\"~y~Поздравляю!~n~~b~Норма успешно выполнена!\",3000,0]`);
-               return;
+               this.sendGameText(`[2,\"~y~Поздравляю!~n~~b~Норма успешно выполнена!\",3000,0,-1,1]`);
+               return
           };
 
-          this.sendGameText(`[2,\"~b~+1 ответ\",1000,0]`);
-          return;
+          this.sendGameText(`[2,\"~b~+1 ответ\",1000,0,-1,1]`);
+          return
      }
      saveReplies() {
           let data = this.db.transaction('replies', 'readwrite').objectStore('replies');
@@ -93,7 +97,7 @@ class Replies {
      sendGameText(text) {
           if (window.App.$children[0].components.GameText.open.status) {
                window.App.$children[0].$refs["GameText"][0].add(text);
-               return;
+               return
           };
 
           window.App.$children[0].components.GameText.open.status = 1;
@@ -101,7 +105,7 @@ class Replies {
           setTimeout(() => {
                window.App.$children[0].$refs["GameText"][0].add(text);
           }, 40);
-          return;
+          return
      }
      progressInColor(h, s, l) {
           l /= 100;
@@ -114,18 +118,19 @@ class Replies {
           return `${f(0)}${f(8)}${f(4)}`;
      }
      setRepliesToComplete(value) {
+          console.log('Устанавливаю норму...');
           this.dialogOpen = 1;
 
           value = value + '';
 
           if (value == 'new-replies') {
                App.$children[0].addDialogInQueue("[0,1,\"{FFCD00}Норма\",\"\",\"Далее\",\"\",0,0]", "Введите норму по зеткам.<n><n>По достижению выполнения нормы Вы будете уведомлены,<n>поэтому не стоит ставить огромные числа.", 0);
-               return;
+               return
           };
 
           if (!Number.isInteger(+value) || value.startsWith(0) || +value <= 0) {
                App.$children[0].addDialogInQueue("[0,1,\"Норма\",\"\",\"\",\"Далее\",0,0]", "{D56F33}В поле должны быть цифры и норма не может быть нулевой!", 0);
-               return;
+               return
           };
 
           this.repliesToComplete = +value;
@@ -135,7 +140,6 @@ class Replies {
           return
      }
      isNewDay() {
-
           let lastIndex = this.replies.items.length - 1,
                todayDate = new Date().toJSON().split(/T/)[0],
                id = this.replies.items[lastIndex].id;
@@ -160,7 +164,8 @@ class Replies {
           return;
      }
      isAdmin() {
-          return App.$children[0].$refs["Report"][0].chat.name.split(/[\[-\]]/g).length == 7 || App.$children[0].$refs["Report"][0].appeals[0].isAdmin;
+          if (this.debugMode) return !App.$children[0].$refs["Report"][0].chat.name.split(/[\[-\]]/g).length == 7 || !App.$children[0].$refs["Report"][0].appeals[0].isAdmin;
+          if (!this.debugMode) return App.$children[0].$refs["Report"][0].chat.name.split(/[\[-\]]/g).length == 7 || App.$children[0].$refs["Report"][0].appeals[0].isAdmin;
      }
      validateText() {
           let inputHandle = document.querySelector('.report-chat__input').children[0];
@@ -182,21 +187,21 @@ class Replies {
                };
           }
      }
-     closeReplies(){
+     closeReplies() {
           App.$children[0].$children[1].$children[0].back();
      }
-     closeFaq(){
+     closeFaq() {
           this.canAddReply = 0
      }
      start() {
           this.loadReplies();
 
           window.App.$children[0].components["Report"].open = new Proxy(window.App.$children[0].components["Report"].open, {
-               set(target, prop, value){
+               set(target, prop, value) {
                     target[prop] = value;
 
-                    !value? replies.closeFaq(): null;
-                    
+                    !value ? replies.closeFaq() : null;
+
                     return true
                }
           })
@@ -205,7 +210,7 @@ class Replies {
 
                try {
 
-                    if ((e.keyCode == 27 || e.keyCode == 13) && this.dialogOpen){
+                    if ((e.keyCode == 27 || e.keyCode == 13) && this.dialogOpen) {
                          this.closeReplies();
                     }
 
@@ -252,7 +257,7 @@ class Replies {
           })
 
           document.addEventListener('mousedown', (e) => {
-               if (this.dialogOpen && e.target.classList[0] == 'window-button' && e.target.innerText == 'Закрыть'){
+               if (this.dialogOpen && e.target.classList[0] == 'window-button' && e.target.innerText == 'Закрыть') {
                     App.$children[0].$children[1].$children[0].back();
                }
 
@@ -297,4 +302,14 @@ class Replies {
 
 const replies = new Replies();
 
-replies.start();
+let interval = setInterval(() => {
+     if (App.$children[0].$children[2].info.show){
+          console.log('Худ открылся, запускаю скрипт...');
+          replies.start();
+
+          clearInterval(interval);
+          return
+     }
+
+     console.log('Худ не открылся...');
+}, 1500);
