@@ -312,4 +312,4 @@ let interval = setInterval(() => {
      }
 
      console.log('Худ не открылся...');
-}, 1500);
+}, 1000);
