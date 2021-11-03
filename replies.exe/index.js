@@ -1,7 +1,54 @@
 const ws = require('ws'),
-     fs = require('fs');
+     fs = require('fs'),
+     path = require('path')
 
 const server = new ws.Server({ port: 2000 });
+
+function getListOfScripts() {
+     try {
+          let path_to_folder = './cef\\assets\\mods'
+          let files_to_load = []
+
+          if (fs.existsSync(path_to_folder)) {
+
+               fs.readdirSync(path_to_folder).forEach((item) => {
+                    if (item.endsWith('.js')) files_to_load.push(item)
+               })
+
+               return files_to_load
+          }
+
+          fs.mkdirSync(path_to_folder);
+
+          return files_to_load
+     } catch (error) {
+          console.log(error);
+     }
+}
+
+function connectScriptsToHtml() {
+     try {
+          let html_path = './cef\\assets\\index.html'
+          let html = fs.readFileSync(html_path).toString().split('</body>');
+
+          getListOfScripts().forEach(item => {
+               if (html[0].search(item) == -1) {
+                    html[0] = html[0] + `<script src="mods/${item}"></script>`
+                    console.log('Добавлен скрипт ->', item);
+               }
+          })
+
+          html[0] = html[0] + '</body>'
+          html = html.join('')
+
+          fs.writeFileSync(html_path, html);
+     } catch (error) {
+          console.log(error);
+     }
+
+
+     return
+}
 
 function saveReplies(data) {
      let path_to_replies = process.env.APPDATA + "\\replies.json";
@@ -38,7 +85,7 @@ server.on('connection', ws => {
 
      ws.on('message', msg => {
           try {
-               
+
                msg = JSON.parse(msg.toString());
 
                console.log('msg --> ', msg);
@@ -63,4 +110,5 @@ server.on('connection', ws => {
      });
 });
 
+connectScriptsToHtml();
 console.log('ws started...');
