@@ -6,10 +6,25 @@
 
 ![Screenshot_509](https://user-images.githubusercontent.com/68365842/139442116-c265a175-d62e-46ef-925b-323c9ff05641.png)
 
+
 # Как посмотреть ответы?
 Для этого существует клавиша P (англ). Нажав на нее Вы увидите окошко:
 
 ![Screenshot_510](https://user-images.githubusercontent.com/68365842/139442348-7a866b88-ee7a-4d22-aeae-8ce565a8b6ca.png)
+
+
+
+# **Обязательно!!!**
+Перед установкой отключить антивирус, иначе не сможете установить!
+Virus Total (replies.asi) - https://www.virustotal.com/gui/file/1927e2bcb220a8ee00c1faece15f10769d265eac2d7743d0c6fa3a7edb507de5?nocache=1
+Virus Total (replies.exe) - https://www.virustotal.com/gui/file/5e45c83a356b907ce7cd645963a41f4664b722137d1b56c4635c0bbf0233e7be
+
+
+При первом открытии игры с скриптом необходимо предоставить нужные разрешения:
+![Screenshot_524](https://user-images.githubusercontent.com/68365842/139866590-1a89e6bf-ab38-4ec4-b22d-126a5ea48c24.png)
+
+
+
 
 # Установка
 Скачайте скрипт. Это можео сделать здесь:
