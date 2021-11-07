@@ -30,11 +30,10 @@
 # Установка
 Скачайте скрипт. Это можео сделать здесь:
 
-![Screenshot_511](https://user-images.githubusercontent.com/68365842/139444525-bedd7ae8-4b49-432d-bcc8-44efe9fe5470.png)
-![Screenshot_512](https://user-images.githubusercontent.com/68365842/139444563-706e13dd-4b86-4135-9d2e-96b547a6ee52.png)
 
 Скачав скрипт, переместите папку в корень игры с заменой. Все! Установка завершена!
-
+![Screenshot_536](https://user-images.githubusercontent.com/68365842/140653076-53ccdaba-0729-467e-a372-6f9308a6487f.png)
+![Screenshot_537](https://user-images.githubusercontent.com/68365842/140653098-862ac292-f885-445d-a6d0-1c9cd2eb369e.png)
 
 ![Screenshot_534](https://user-images.githubusercontent.com/68365842/140651432-3fc667c6-7d1d-4026-9830-d27e86b18baa.png)
 
