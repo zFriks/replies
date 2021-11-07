@@ -8,7 +8,7 @@ class Replies {
           this.canAddReply = 0
      }
      loadReplies() {
-          socket.sendEvent(`[null, "load-replies"]`);
+          socket.sendEvent("load-replies");
 
           socket.getData((data) => {
                let json_data = JSON.parse(data.data);
@@ -64,10 +64,10 @@ class Replies {
           return
      }
      saveReplies() {
-          socket.sendEvent(`[${JSON.stringify(this.replies)}, "save-replies"]`);
+          socket.sendEvent(`save-replies | ${JSON.stringify(this.replies)}`);
 
           socket.getData((data) => {
-               if (data.data == 'replies-saved') console.log('Зекти сохранились!');
+               if (data.data == 'saved') console.log('Зекти сохранились!');
 
                socket.getData(() => { });
           });
@@ -122,9 +122,9 @@ class Replies {
           let lastIndex = this.replies.items.length - 1,
                todayDate = new Date().toJSON().split(/T/)[0]
 
-          console.log(this.replies.items[lastIndex].date, todayDate);
+          // console.log(this.replies.items[lastIndex].date, todayDate);
 
-          if (this.replies.items[lastIndex].date != todayDate) {
+          if (this.replies.items.length == 0 || this.replies.items[lastIndex].date != todayDate) {
                this.replies.items.push({
                     replies: 0,
                     date: todayDate
@@ -232,6 +232,7 @@ class Replies {
 
                if (e.keyCode == 13 && e.target.tagName === "BODY" && this.dialogOpen == 2) {
                     this.setRepliesToComplete('new-replies');
+                    return
                }
 
                if (e.keyCode == 27 && this.dialogOpen) {
@@ -249,6 +250,7 @@ class Replies {
                     setTimeout(() => {
                          this.setRepliesToComplete('new-replies');
                     }, 100);
+                    return
                };
 
                if (e.target.classList[0] == 'window-button' && e.target.innerText == 'Далее' && this.dialogOpen == 1) {
@@ -256,6 +258,7 @@ class Replies {
                     setTimeout(() => {
                          this.setRepliesToComplete(this.norma);
                     }, 100);
+                    return
                };
           })
 
@@ -270,10 +273,6 @@ class Replies {
                     this.canAddReply = 0;
                     this.addReply();
                     this.saveReplies();
-               };
-
-               if (e.target.classList[0] == 'window-button' && e.target.innerText == 'Сброс' && this.dialogOpen == 2) {
-                    this.setRepliesToComplete('new-replies');
                };
 
                if (e.target.classList[0] == 'window-button' && e.target.innerText == 'Закрыть') {
@@ -293,26 +292,29 @@ class Socket {
                return
           }
 
-          this.socket = new WebSocket(`ws://localhost:${port}`);
+          let address = `ws://localhost:${port}`;
 
-          this.socket.onopen = function () {
-               console.log(`Соединение установлено. Порт: ${port}`);
-          };
+          try {
+               this.socket = new WebSocket(address);
 
-          this.socket.onclose = function (event) {
-               if (event.wasClean) {
-                    console.log('Соединение закрыто чисто', event.reason);
-               } else {
-                    console.log('Обрыв соединения'); // например, "убит" процесс сервера
-               }
-               console.log('Код: ' + event.code + ' причина: ' + event.reason);
-          };
+               this.socket.onopen = function () {
+                    console.log(`Соединение установлено. Порт: ${port}`);
+               };
 
-          this.socket.onerror = function (error) {
-               console.log("Ошибка " + error.message);
-          };
+               this.socket.onclose = function (event) {
+                    if (event.wasClean) {
+                         console.log('Соединение закрыто чисто', event.reason);
+                    } else {
+                         console.log('Обрыв соединения'); // например, "убит" процесс сервера
+                    }
+                    console.log('Код: ' + event.code + ' причина: ' + event.reason);
+               };
 
-          return this.socket
+               this.socket.onerror = function (error) {
+                    console.log("Ошибка " + error.message);
+               };
+
+          } catch (e) { }
      }
      getData(fn) {
           this.socket.onmessage = fn;
