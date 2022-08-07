@@ -3,7 +3,7 @@
 	<br>
 	<img width="360" src="media/logo.svg" alt="Replies">
 	<br>
-	<p>Удобный счетчик /z для Саппортов проекта Radmir CRMP + видео как установить внизу</p>
+	<p>Удобный счетчик /z для Саппортов проекта Radmir CRMP + видео как установить https://youtu.be/oB5KfsDb1iU</p>
 	<br>
 	<br>
 </div>
@@ -24,6 +24,7 @@
 # Как работает скрипт?
 Ваша задача - отвечать на вопросы игроков, а скрипт все сделает за вас! После каждоого ответа появится такое сообщение (в настройках можно отключить):
 
+![unknown_2022 08 07-13 44_2-min (1)](https://user-images.githubusercontent.com/68365842/183286462-a31a1674-f4a9-4066-b014-318221f10ae5.gif)
 ![Screenshot_509](https://user-images.githubusercontent.com/68365842/139442116-c265a175-d62e-46ef-925b-323c9ff05641.png)
 
 
@@ -40,5 +41,6 @@
 
 # Установка
 Скачайте скрипт по ссылке: https://github.com/zFriks/replies/releases/latest
+
 И делайте как показано в видео: https://youtu.be/oB5KfsDb1iU
 
