@@ -3,7 +3,7 @@
 	<br>
 	<img width="360" src="media/logo.svg" alt="Replies">
 	<br>
-	<p>Удобный счетчик /z для Саппортов проекта Radmir CRMP</p>
+	<p>Удобный счетчик /z для Саппортов проекта Radmir CRMP + видео как установить внизу</p>
 	<br>
 	<br>
 </div>
@@ -40,5 +40,5 @@
 
 # Установка
 Скачайте скрипт по ссылке: https://github.com/zFriks/replies/releases/latest
-И делайте как показано в видео: 
+И делайте как показано в видео: https://youtu.be/oB5KfsDb1iU
 
