@@ -3,7 +3,8 @@
 	<br>
 	<img width="360" src="media/logo.svg" alt="Replies">
 	<br>
-	<p>Удобный счетчик /z для Саппортов проекта Radmir CRMP + видео как установить https://youtu.be/oB5KfsDb1iU</p>
+	<p>Удобный счетчик /z для Саппортов проекта Radmir CRMP</p>
+	<strong><a href='https://github.com/zFriks/replies/releases/latest'>Скачать</a> | <a href='https://youtu.be/oB5KfsDb1iU'>Как установить</a></strong>
 	<br>
 	<br>
 </div>
