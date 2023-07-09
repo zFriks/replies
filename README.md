@@ -4,7 +4,7 @@
 	<img width="360" src="media/logo.svg" alt="Replies">
 	<br>
 	<p>Удобный счетчик /z для Саппортов проекта Radmir CRMP</p>
-	<strong><a href='https://github.com/zFriks/replies/releases/latest'>Скачать</a> | <a href='https://youtu.be/oB5KfsDb1iU'>Как установить</a></strong> <br>
+	<strong><a href='https://github.com/zFriks/replies/releases/download/v1.7.3/Replies.1.7.3.zip'>Скачать</a> | <a href='https://youtu.be/oB5KfsDb1iU'>Как установить</a></strong> <br>
 	<strong>Если возникли вопросы, вот мой <a href='https://vk.com/zfriks'>ВК</a> </strong>
 	<br>
 	<br>
@@ -33,8 +33,8 @@
 # Как посмотреть ответы?
 Нажмите на клавиатуре клавишу P (англ), чтобы посмотреть кол-во отвеченных зеток
 
-![Screenshot_732](https://user-images.githubusercontent.com/68365842/183284074-4360fa5a-36cc-427e-a640-9e61be90ae9c.png)
-![Screenshot_733](https://user-images.githubusercontent.com/68365842/183284077-163bf53f-6283-4b68-8e03-7a814a75a4d8.png)
+![Screenshot_732](./media/main.jpg)
+![Screenshot_733](./media/settings.jpg)
 
 # [НОВОВВЕДЕНИЕ] Индикатор отвеченных зеток (включается в параметрах).
 Также с этим обновлением добавлен полезный индикатор, показывающий кол-во отвеченных зеток на экране. Его можно переместить в любую часть экрана зажатием ЛКМ.
