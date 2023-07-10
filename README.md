@@ -4,7 +4,7 @@
 	<img width="360" src="media/logo.svg" alt="Replies">
 	<br>
 	<p>Удобный счетчик /z для Саппортов проекта Radmir CRMP</p>
-	<strong><a href='https://github.com/zFriks/replies/releases/download/v1.7.3/Replies.1.7.3.zip'>Скачать</a> | <a href='https://www.youtube.com/watch?v=Dl5_bt5GGyY'>Как установить</a></strong> <br>
+	<strong><a href='https://github.com/zFriks/replies/releases/download/v1.7.3/Replies.1.7.3.zip'>Скачать</a> | <a href='https://www.youtube.com/watch?v=Dl5_bt5GGyY'>Как установить + Бинд клавиши</a></strong> <br>
 	<strong>Если возникли вопросы, вот мой <a href='https://vk.com/zfriks'>ВК</a> </strong>
 	<br>
 	<br>
